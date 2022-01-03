@@ -21,6 +21,7 @@ AGOW_Character::AGOW_Character()
 
 	RunSpeed = 1000.0f;
 	WalkSpeed = 600.0f;
+	bIsShooting;
 
 
 }
@@ -70,6 +71,19 @@ void AGOW_Character::Walk()
 	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 }
 
+void AGOW_Character::Shoot()
+{
+
+	this->bIsShooting = true;
+	
+}
+
+void AGOW_Character::StopShooting()
+{
+	this->bIsShooting = false;
+
+}
+
 
 
 // Called to bind functionality to input
@@ -92,6 +106,10 @@ void AGOW_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	//Sprint
 	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &AGOW_Character::Run);
 	PlayerInputComponent->BindAction("Run", IE_Released, this, &AGOW_Character::Walk);
+
+	//Shoot
+	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &AGOW_Character::Shoot);
+	PlayerInputComponent->BindAction("Shoot", IE_Released, this, &AGOW_Character::StopShooting);
 
 
 }

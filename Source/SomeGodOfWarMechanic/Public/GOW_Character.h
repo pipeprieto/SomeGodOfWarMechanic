@@ -25,6 +25,9 @@ public:
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category="Components")
 		UCameraComponent* TPCameraComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Shoot")
+		bool bIsShooting;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -57,4 +60,10 @@ public:
 
 	UFUNCTION()
 		void Walk();
+
+	UFUNCTION()
+		void Shoot();
+
+	UFUNCTION()
+		void StopShooting();
 };
