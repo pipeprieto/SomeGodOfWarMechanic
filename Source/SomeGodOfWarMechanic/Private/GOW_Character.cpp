@@ -11,6 +11,8 @@ AGOW_Character::AGOW_Character()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	WeaponSocketName = "SCK_Hand_r";
+
 	SpringarmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringarmComponent"));
 	SpringarmComponent->bUsePawnControlRotation = true;
 	SpringarmComponent->SetupAttachment(RootComponent);
@@ -18,6 +20,9 @@ AGOW_Character::AGOW_Character()
 
 	TPCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TP_CameraComponent"));
 	TPCameraComponent->SetupAttachment(SpringarmComponent);
+
+	LeviathanAxeComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LeviathanAxeComponent"));
+	LeviathanAxeComponent->SetupAttachment(GetMesh(), WeaponSocketName);
 
 	RunSpeed = 1000.0f;
 	WalkSpeed = 600.0f;

@@ -25,8 +25,14 @@ public:
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category="Components")
 		UCameraComponent* TPCameraComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+		UStaticMeshComponent* LeviathanAxeComponent;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Shoot")
 		bool bIsShooting;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Socket")
+		FName WeaponSocketName;
 
 protected:
 	// Called when the game starts or when spawned
